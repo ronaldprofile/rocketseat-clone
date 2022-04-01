@@ -1,8 +1,11 @@
 import { EditIcon } from "../../assets/EditIcon";
+import { useUser } from "../../context/UserContext";
 import { ModalMyProfile } from "../ModalMyProfile";
 import * as C from "./styles";
 
 export function CardUser() {
+  const { user } = useUser();
+
   return (
     <C.Container>
       <ModalMyProfile>
@@ -17,11 +20,14 @@ export function CardUser() {
         </div>
 
         <button>
-          <img src="https://github.com/ronaldprofile.png" alt="Ronald Tomaz" />
+          <img
+            src={`https://ui-avatars.com/api/?size=128&background=5b4699&color=fff&name=${user?.name}`}
+            alt={"Foto do " + user.name}
+          />
         </button>
       </C.Label>
 
-      <C.Title as="h1">Ronald Tomaz</C.Title>
+      <C.Title as="h1">{user.name}</C.Title>
       <C.Section></C.Section>
 
       <div className="member">
