@@ -22,12 +22,12 @@ export function CardUser() {
         <button>
           <img
             src={`https://ui-avatars.com/api/?size=128&background=5b4699&color=fff&name=${user?.name}`}
-            alt={"Foto do " + user.name}
+            alt={"Foto do " + user?.name}
           />
         </button>
       </C.Label>
 
-      <C.Title as="h1">{user.name}</C.Title>
+      <C.Title as="h1">{user?.name}</C.Title>
       <C.Section></C.Section>
 
       <div className="member">
