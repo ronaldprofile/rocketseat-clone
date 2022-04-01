@@ -36,7 +36,7 @@ export default function Dashboard() {
                 <header>
                   <span>
                     <img
-                      src={`https://ui-avatars.com/api/?size=128&background=5b4699&color=fff&name=${user.name}`}
+                      src={`https://ui-avatars.com/api/?size=128&background=5b4699&color=fff&name=${user?.name}`}
                       alt={"Foto do " + user?.name}
                     />
                   </span>
