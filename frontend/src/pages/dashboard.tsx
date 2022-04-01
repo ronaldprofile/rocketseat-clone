@@ -24,7 +24,7 @@ export default function Dashboard() {
           <D.Wrapper>
             <div>
               <div className="welcome">
-                <h2>Olá, {user?.name || "Ronald"}</h2>
+                <h2>Olá, {user.name}</h2>
                 <p>Sua jornada rumo ao próximo nível está apenas começando!</p>
               </div>
 
@@ -36,10 +36,8 @@ export default function Dashboard() {
                 <header>
                   <span>
                     <img
-                      src={`https://ui-avatars.com/api/?size=128&background=5b4699&color=fff&name=${
-                        user?.name || "Ronald Tomaz"
-                      }`}
-                      alt={"Foto do " + user?.name}
+                      src={`https://ui-avatars.com/api/?size=128&background=5b4699&color=fff&name=${user.name}`}
+                      alt={"Foto do " + user.name}
                     />
                   </span>
 
