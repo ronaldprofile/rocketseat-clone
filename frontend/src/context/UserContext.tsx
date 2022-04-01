@@ -1,5 +1,12 @@
-import { createContext, ReactNode, useContext, useState } from "react";
+import {
+  createContext,
+  ReactNode,
+  useContext,
+  useEffect,
+  useState
+} from "react";
 import { useRouter } from "next/router";
+import { api } from "../services/api";
 
 interface User {
   name: string;
@@ -30,8 +37,26 @@ export function UserContextProvider({ children }: UserContextProviderProps) {
   const [user, setUser] = useState<User>(null);
   const router = useRouter();
 
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("@rocketseat_clone"));
+
+    if (user) {
+      api.get(`user/${user.id}`).then(response => {
+        setUser(response.data);
+      });
+    }
+  }, []);
+
   async function signup(user: User) {
-    setUser(user);
+    try {
+      const { data: userData } = await api.post("signup", user);
+
+      localStorage.setItem("@rocketseat_clone", JSON.stringify(userData));
+
+      setUser(userData);
+    } catch (error) {
+      console.log(error);
+    }
 
     router.push("/dashboard");
   }
