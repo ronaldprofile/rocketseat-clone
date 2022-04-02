@@ -34,6 +34,7 @@ export const { globalCss, getCssText, styled, theme, keyframes } =
 
         blue: "#0000ee",
         green: "#04d361",
+        green100: "#22332C",
         orange: "#fd951f",
         purple: "#8257e5",
         purple50: "#8257e6",
