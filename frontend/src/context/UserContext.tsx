@@ -13,18 +13,34 @@ interface User {
   email: string;
   password: string;
   password_confirmation: string;
-}
 
-interface UserInformation {
   about_me: string;
+  avatar_url: string;
   github_url: string;
   linkedin_url: string;
+  occupation: string;
+  status: string;
+  company: string;
+
+  city: string;
+  state: string;
+  country: string;
+}
+
+interface UserProfileInformation {
+  name: string;
+  occupation: string;
+  status: string;
+  company: string;
+  city: string;
+  state: string;
+  country: string;
 }
 
 interface UserContextData {
   user: User | null;
   signup: (user: User) => Promise<void>;
-  handleUpdateAboutUser: (userInformation: UserInformation) => Promise<void>;
+  handleUpdateProfileUser: (user: UserProfileInformation) => Promise<void>;
 }
 
 const UserContext = createContext({} as UserContextData);
@@ -35,25 +51,26 @@ interface UserContextProviderProps {
 
 export function UserContextProvider({ children }: UserContextProviderProps) {
   const [user, setUser] = useState<User>(null);
+  const [userId, setUserId] = useState("");
   const router = useRouter();
 
   useEffect(() => {
-    const user = JSON.parse(localStorage.getItem("@rocketseat_clone"));
+    const userStorage = JSON.parse(localStorage.getItem("@rocketseat_clone"));
 
-    if (user) {
-      api.get(`user/${user.id}`).then(response => {
+    if (userStorage) {
+      api.get(`user/${userStorage.id}`).then(response => {
         setUser(response.data);
+        setUserId(userStorage.id);
       });
     }
   }, []);
 
   async function signup(user: User) {
     try {
-      const { data: userData } = await api.post("signup", user);
+      const { data } = await api.post("signup", user);
+      localStorage.setItem("@rocketseat_clone", JSON.stringify(data));
 
-      localStorage.setItem("@rocketseat_clone", JSON.stringify(userData));
-
-      setUser(userData);
+      setUser(data);
     } catch (error) {
       console.log(error);
     }
@@ -61,15 +78,19 @@ export function UserContextProvider({ children }: UserContextProviderProps) {
     router.push("/dashboard");
   }
 
-  async function handleUpdateAboutUser(userInformation: UserInformation) {
-    setUser(previousState => {
-      return {
-        ...previousState,
-        about_me: userInformation.about_me,
-        linkedin_url: userInformation.linkedin_url,
-        github_url: userInformation.github_url
-      };
-    });
+  async function handleUpdateProfileUser(user: UserProfileInformation) {
+    try {
+      const { data: updatedUser } = await api.put(`user/${userId}`, user);
+
+      setUser(previousState => {
+        return {
+          ...previousState,
+          ...updatedUser
+        };
+      });
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   return (
@@ -77,7 +98,7 @@ export function UserContextProvider({ children }: UserContextProviderProps) {
       value={{
         user,
         signup,
-        handleUpdateAboutUser
+        handleUpdateProfileUser
       }}
     >
       {children}
