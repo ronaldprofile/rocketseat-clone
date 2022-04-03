@@ -13,7 +13,7 @@ export const Form = styled("form", {
       },
 
       "> div": {
-        label: {
+        "> label": {
           display: "block",
           marginBottom: 8,
           fontSize: 14,
@@ -37,6 +37,16 @@ export const Form = styled("form", {
           "&:focus": {
             borderColor: "$purple"
           }
+        }
+      },
+
+      ".error": {
+        textAlign: "left",
+        span: {
+          display: "inline-block",
+          paddingTop: 7,
+          fontSize: 14,
+          color: "$red"
         }
       },
 
