@@ -33,7 +33,7 @@ interface ModalDataInputs {
 }
 
 export function ModalAboutMe({ children }: ModalAboutMeProps) {
-  const { handleUpdateAboutUser } = useUser();
+  // const {  } = useUser();
 
   const {
     handleSubmit,
@@ -45,7 +45,7 @@ export function ModalAboutMe({ children }: ModalAboutMeProps) {
   const handleSubmitForm: SubmitHandler<ModalDataInputs> = async values => {
     const userInformation = { ...values };
 
-    await handleUpdateAboutUser(userInformation);
+    // await (userInformation);
 
     reset();
   };
