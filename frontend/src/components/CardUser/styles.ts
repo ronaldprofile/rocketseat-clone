@@ -44,6 +44,16 @@ export const Label = styled("label", {
   borderRadius: "50%",
   cursor: "pointer",
 
+  variants: {
+    userIsWorking: {
+      true: {
+        "&::before": {
+          borderColor: "$green"
+        }
+      }
+    }
+  },
+
   "&::before": {
     content: "",
     position: "absolute",
@@ -101,14 +111,53 @@ export const Label = styled("label", {
       objectFit: "cover",
       borderRadius: "50%"
     }
+  },
+
+  ".company": {
+    width: "100%",
+    position: "absolute",
+    bottom: 0,
+    left: 0,
+    textAlign: "center",
+
+    strong: {
+      padding: "7px 16px",
+      fontSize: 12,
+      textTransform: "uppercase",
+
+      background: "$green100",
+      color: "$green",
+      borderRadius: 20
+    }
   }
 });
 
 export const Section = styled("section", {
+  margin: "24px 0",
   fontSize: 16,
   lineHeight: 1.5,
   color: "rgb(230, 230, 230)",
-  margin: "15px 0"
+  textAlign: "center",
+
+  span: {
+    fontSize: 16,
+    color: "$white70"
+  },
+
+  ".address": {
+    marginTop: 8,
+
+    span: {
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+
+      svg: {
+        marginRight: 8,
+        fill: "$gray50"
+      }
+    }
+  }
 });
 
 export const ButtonEdit = styled("button", {
@@ -136,6 +185,7 @@ export const ButtonEdit = styled("button", {
 });
 
 export const Title = styled("h1", {
+  marginBottom: 30,
   fontSize: 24,
   fontWeight: "bold",
   color: "$white"

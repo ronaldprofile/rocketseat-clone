@@ -1,10 +1,14 @@
-import { EditIcon } from "../../assets/EditIcon";
 import { useUser } from "../../context/UserContext";
+import { EditIcon } from "../../assets/EditIcon";
+import { LocalizationIcon } from "../../assets/Localization";
 import { ModalMyProfile } from "../ModalMyProfile";
 import * as C from "./styles";
 
 export function CardUser() {
   const { user } = useUser();
+
+  const userIsWorking = user?.company && user?.status === "employed";
+  const userHasAddress = user?.city || user?.state || user?.country;
 
   return (
     <C.Container>
@@ -14,7 +18,7 @@ export function CardUser() {
         </C.ButtonEdit>
       </ModalMyProfile>
 
-      <C.Label>
+      <C.Label userIsWorking={userIsWorking}>
         <div className="hover-text">
           <span>Trocar Imagem</span>
         </div>
@@ -25,10 +29,32 @@ export function CardUser() {
             alt={"Foto do " + user?.name}
           />
         </button>
+
+        {userIsWorking && (
+          <div className="company">
+            <strong>{user?.company}</strong>
+          </div>
+        )}
       </C.Label>
 
       <C.Title as="h1">{user?.name}</C.Title>
-      <C.Section></C.Section>
+
+      <C.Section>
+        {user?.occupation && (
+          <div className="occupation">
+            <span>{user?.occupation}</span>
+          </div>
+        )}
+
+        {userHasAddress && (
+          <div className="address">
+            <span>
+              <LocalizationIcon />
+              {user?.city} {user?.state} {user?.country}
+            </span>
+          </div>
+        )}
+      </C.Section>
 
       <div className="member">
         <span>Membro desde: Março, 2022</span>
