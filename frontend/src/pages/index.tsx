@@ -55,7 +55,19 @@ export default function Home() {
   const handleCreateUser: SubmitHandler<CreateUserFormData> = async values => {
     const user = values;
 
-    await signup(user);
+    await signup({
+      ...user,
+      about_me: "",
+      avatar_url: "",
+      github_url: "",
+      linkedin_url: "",
+      company: "",
+      occupation: "",
+      status: "",
+      city: "",
+      state: "",
+      country: ""
+    });
   };
 
   return (
