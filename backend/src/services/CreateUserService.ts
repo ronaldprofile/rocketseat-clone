@@ -5,19 +5,29 @@ interface User {
   email: string;
   password: string;
   password_confirmation: string;
+
+  about_me: string;
+  avatar_url: string;
+  github_url: string;
+  linkedin_url: string;
+
+  occupation: string;
+  company: string;
+  status: string;
+
+  city: string;
+  state: string;
+  country: string;
 }
 
 export class CreateUserService {
-  async execute(userData: User) {
-    const user = await prismaClient.user.create({
+  async execute(user: User) {
+    const registeredUser = await prismaClient.user.create({
       data: {
-        name: userData.name,
-        email: userData.email,
-        password: userData.password,
-        password_confirmation: userData.password_confirmation
+        ...user
       }
     });
 
-    return user;
+    return registeredUser;
   }
 }
