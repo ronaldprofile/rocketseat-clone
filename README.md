@@ -12,7 +12,9 @@ O foco será desenvolver o fluxo de cadastro de usuário e claro algumas interfa
 
 Abaixo segue uma demo do projeto.
 
-https://user-images.githubusercontent.com/81709922/159483506-fcc25dcd-c84d-4878-b4f4-e7be7d791fd5.mp4
+https://user-images.githubusercontent.com/81709922/161407480-cd96503f-aa31-418f-9d7b-4770546ca242.mp4
+
+
 
 ## Próximo nível
 
