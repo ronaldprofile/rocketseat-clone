@@ -20,11 +20,16 @@ https://user-images.githubusercontent.com/81709922/159483506-fcc25dcd-c84d-4878-
 - Tela de usuário ✅.
 - Tela de Dashboard ✅.
 - Navegação com next router ✅.
-- Cadastro de usuário (Coming soon).
+- Cadastro de usuário ✅.
+
+- Upload de imagens para foto de perfil e banner (Coming soon).
 
 ## Techs
 
 - Next JS.
+- Prisma.
+- Node JS.
+- Typescript.
 - Stitches.
 - Radix UI.
 - React Hook Form.
@@ -32,5 +37,5 @@ https://user-images.githubusercontent.com/81709922/159483506-fcc25dcd-c84d-4878-
 ## Uso
 
 - Clone o repo `git clone https://github.com/ronaldprofile/rocketseat-clone.git`.
-- Instale as dependências `yarn`.
-- Execute o servidor `yarn dev`.
+- Entre nas pastas `frontend & backend` e instale as dependências com `yarn`.
+- Execute o servidor de cada pasta com `yarn dev`.
