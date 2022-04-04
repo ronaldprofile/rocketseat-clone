@@ -73,7 +73,7 @@ export default function Login() {
 
           <div className="register">
             <span>Não tem uma conta?&nbsp;</span>
-            <a href="#">Registre-se</a>
+            <a href="/">Registre-se</a>
           </div>
 
           <div className="divider"></div>
