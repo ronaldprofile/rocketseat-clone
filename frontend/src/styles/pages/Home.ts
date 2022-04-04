@@ -105,23 +105,6 @@ export const Form = styled("form", {
   }
 });
 
-export const Input = styled("input", {
-  width: "100%",
-  height: 50,
-  padding: "0 16px 0 42px",
-
-  fontSize: 16,
-  color: "$white",
-  background: "$black80",
-  borderRadius: "$sm",
-  border: "2px solid $black80",
-  transition: "border .2s",
-  outline: "none",
-  "&:focus": {
-    borderColor: "$purple"
-  }
-});
-
 export const Content = styled("div", {
   maxWidth: 480,
   paddingLeft: 100,
@@ -143,5 +126,29 @@ export const Content = styled("div", {
   p: {
     fontSize: 16,
     color: "$gray70"
+  },
+
+  ".divider": {
+    margin: "24px 0"
+  },
+
+  ".login": {
+    display: "flex",
+    alignItems: "center",
+
+    span: {
+      color: "$gray70"
+    },
+
+    a: {
+      fontSize: 16,
+      fontWeight: 600,
+      color: "$purple50",
+      opacity: 0.8,
+      transition: ".2s",
+      "&:hover": {
+        opacity: 1
+      }
+    }
   }
 });
