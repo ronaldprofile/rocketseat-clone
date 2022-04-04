@@ -32,6 +32,13 @@ export const Button = styled("button", {
           background: "#a883FF",
           borderColor: "#a883FF"
         }
+      },
+
+      disabled: {
+        background: "$purple70",
+        fontSize: 16,
+        color: "$gray50",
+        cursor: "not-allowed"
       }
     }
   },
