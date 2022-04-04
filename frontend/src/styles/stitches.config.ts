@@ -18,7 +18,7 @@ export const { globalCss, getCssText, styled, theme, keyframes } =
         white60: "#e1e1e6",
         white70: "#e6e6e6",
         white80: "#b7aae6",
-
+        white90: "#cccccc",
         gray: "#737380",
         gray50: "#87868b",
         gray60: "#999999",
@@ -39,7 +39,7 @@ export const { globalCss, getCssText, styled, theme, keyframes } =
         purple: "#8257e5",
         purple50: "#8257e6",
         purple60: "#937fd5",
-
+        purple70: "#41356B",
         red: "#d34242"
       },
 
