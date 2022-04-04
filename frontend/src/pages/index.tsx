@@ -13,6 +13,7 @@ import { LockIcon } from "../assets/Lock";
 import { UserFormIcon } from "../assets/UserForm";
 
 import { Button } from "../components/Button";
+import { Input } from "../components/Input";
 import * as H from "../styles/pages/Home";
 
 interface CreateUserFormData {
@@ -92,7 +93,7 @@ export default function Home() {
                       Seu E-mail
                     </label>
 
-                    <H.Input
+                    <Input
                       type="email"
                       name="email"
                       aria-label="email"
@@ -114,7 +115,7 @@ export default function Home() {
                     <label htmlFor="name" className="sr-only">
                       Seu nome
                     </label>
-                    <H.Input
+                    <Input
                       type="text"
                       name="name"
                       aria-label="name"
@@ -136,7 +137,7 @@ export default function Home() {
                     <label htmlFor="password" className="sr-only">
                       Sua senha
                     </label>
-                    <H.Input
+                    <Input
                       type="password"
                       name="password"
                       aria-label="password"
@@ -162,7 +163,7 @@ export default function Home() {
                     <label htmlFor="password_confirmation" className="sr-only">
                       Confirme sua senha
                     </label>
-                    <H.Input
+                    <Input
                       type="password"
                       name="password_confirmation"
                       aria-label="password_confirmation"
@@ -206,6 +207,13 @@ export default function Home() {
               Junte-se a milhares de devs e acelere na direção dos seus
               objetivos
             </p>
+
+            <div className="divider"></div>
+
+            <div className="login">
+              <span>Já tem uma conta?&nbsp;</span>
+              <a href="/login">Faça seu login</a>
+            </div>
           </H.Content>
         </H.Wrapper>
       </H.Container>
