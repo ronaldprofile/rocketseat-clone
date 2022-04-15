@@ -1,11 +1,11 @@
-import { useUser } from "../../context/UserContext";
+import { useAuth } from "../../context/Auth";
 import { EditIcon } from "../../assets/EditIcon";
 import { LocalizationIcon } from "../../assets/Localization";
 import { ModalMyProfile } from "../ModalMyProfile";
 import * as C from "./styles";
 
 export function CardUser() {
-  const { user } = useUser();
+  const { user } = useAuth();
 
   const userIsWorking = user?.company && user?.status === "employed";
   const userHasAddress = user?.city || user?.state || user?.country;
