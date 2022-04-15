@@ -4,7 +4,7 @@ import Image from "next/image";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { useUser } from "../context/UserContext";
+import { useAuth } from "../context/Auth";
 
 import logo from "../assets/logo.svg";
 import { EmailIcon } from "../assets/Email";
@@ -44,7 +44,7 @@ const createUserFormSchema = yup.object().shape({
 });
 
 export default function Home() {
-  const { signup } = useUser();
+  const { signup } = useAuth();
   const {
     register,
     handleSubmit,
@@ -53,11 +53,9 @@ export default function Home() {
     resolver: yupResolver(createUserFormSchema)
   });
 
-  const handleCreateUser: SubmitHandler<CreateUserFormData> = async values => {
-    const user = values;
-
+  const handleCreateUser: SubmitHandler<CreateUserFormData> = async data => {
     await signup({
-      ...user,
+      ...data,
       about_me: "",
       avatar_url: "",
       github_url: "",
@@ -75,7 +73,10 @@ export default function Home() {
     <>
       <Head>
         <title>Cadastro | Rocketseat</title>
-        <meta name="description" content="Rocketseat Clone page user" />
+        <meta
+          name="description"
+          content="Crie sua conta gratuita na nossa plataforma Rocketseat e explore um universo incrível sobre tecnologia"
+        />
       </Head>
 
       <H.Container>
