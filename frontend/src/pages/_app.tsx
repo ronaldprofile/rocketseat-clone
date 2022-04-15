@@ -1,14 +1,18 @@
 import type { AppProps } from "next/app";
-import { UserContextProvider } from "../context/UserContext";
+import { ToastContainer } from "react-toastify";
+import { AuthContextProvider } from "../context/Auth";
+
+import "react-toastify/dist/ReactToastify.css";
 import { globalStyles } from "../styles/global";
 
 globalStyles();
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <UserContextProvider>
+    <AuthContextProvider>
       <Component {...pageProps} />
-    </UserContextProvider>
+      <ToastContainer />
+    </AuthContextProvider>
   );
 }
 
