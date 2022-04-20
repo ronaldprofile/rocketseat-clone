@@ -138,5 +138,6 @@ export const StyleModalTitle = styled(DialogPrimitive.Title, {
   marginBottom: 30,
   textAlign: "left",
   fontSize: 24,
-  fontWeight: "bold"
+  fontWeight: "bold",
+  color: "$white"
 });

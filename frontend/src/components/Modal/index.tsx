@@ -36,9 +36,11 @@ export function ModalWrapper({
     <StyledModalWrapper {...props}>
       {children}
 
-      <StyledButtonCloseModal>
-        <CloseModalIcon />
-      </StyledButtonCloseModal>
+      {buttonCloseModal && (
+        <StyledButtonCloseModal>
+          <CloseModalIcon />
+        </StyledButtonCloseModal>
+      )}
     </StyledModalWrapper>
   );
 }
@@ -61,6 +63,12 @@ export function ModalFooterActions() {
       <Button type="submit">confirmar alterações</Button>
     </StyledFooterActions>
   );
+}
+
+type ModalButtonCloseProps = DialogPrimitive.DialogCloseProps;
+
+export function ModalButtonClose({ children }: ModalButtonCloseProps) {
+  return <DialogPrimitive.Close>{children}</DialogPrimitive.Close>;
 }
 
 export const ModalTrigger = DialogPrimitive.Trigger;
