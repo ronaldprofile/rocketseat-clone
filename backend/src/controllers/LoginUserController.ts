@@ -14,10 +14,6 @@ export class LoginUserController {
     try {
       const result = await service.execute(user);
 
-      if (!result) {
-        return response.json({ message: "user not found" });
-      }
-
       return response.json(result);
     } catch (error) {
       console.log(error);
