@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { useUser } from "../context/UserContext";
 import { Header } from "../components/Header";
 import { CardUser } from "../components/CardUser";
 import { ModalAboutMe } from "../components/ModalAboutMe";
@@ -10,8 +9,6 @@ import plusIcon from "../assets/plus.svg";
 import * as P from "../styles/pages/Profile";
 
 export default function Profile() {
-  const { user } = useUser();
-
   return (
     <>
       <Header />
