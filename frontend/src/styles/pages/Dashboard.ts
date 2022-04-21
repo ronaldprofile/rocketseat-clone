@@ -95,7 +95,7 @@ export const Wrapper = styled("div", {
             color: "#8d8d99"
           },
 
-          button: {
+          a: {
             padding: "12px 24px",
             height: 40,
             fontSize: 14
