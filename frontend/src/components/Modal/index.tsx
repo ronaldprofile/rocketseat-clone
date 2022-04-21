@@ -24,16 +24,23 @@ export function Modal({ children, ...props }: ModalProps) {
 
 export type ModalWrapperProps = DialogPrimitive.DialogContentProps &
   React.ComponentProps<typeof StyledModalWrapper> & {
+    width?: number;
+    height?: number;
     buttonCloseModal?: boolean;
   };
 
 export function ModalWrapper({
   children,
   buttonCloseModal = true,
+  width = 768,
+  height,
   ...props
 }: ModalWrapperProps) {
   return (
-    <StyledModalWrapper {...props}>
+    <StyledModalWrapper
+      {...props}
+      css={{ $$maxWidth: `${width}px`, height: `${height}px` }}
+    >
       {children}
 
       {buttonCloseModal && (

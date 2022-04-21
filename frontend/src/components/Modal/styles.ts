@@ -58,7 +58,7 @@ export const StyledModalWrapper = styled(DialogPrimitive.Content, {
   transform: "translate3d(-50%, -50%, 0)",
   zIndex: 9999,
   backfaceVisibility: "hidden",
-  maxWidth: 768,
+  maxWidth: "$$maxWidth",
 
   width: "100%",
   maxHeight: "90vh",
