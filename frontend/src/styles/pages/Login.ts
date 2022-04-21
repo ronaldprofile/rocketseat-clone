@@ -57,26 +57,15 @@ export const Container = styled("div", {
     alignItems: "center",
     gap: 24,
 
-    span: {
-      color: "$white90",
-      whiteSpace: "nowrap"
-    },
-
     a: {
-      height: 50,
       width: "100%",
-      background: "$gray100",
-      fontSize: 16,
-      textTransform: "uppercase",
-      color: "$white",
-
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
-      gap: 8,
-      border: 0,
-      borderRadius: "$sm",
+      gap: 10,
 
+      background: "$gray100",
+      color: "$white",
       transition: "all .2s",
 
       "&:hover": {
@@ -97,6 +86,11 @@ export const Container = styled("div", {
           fill: "$purple"
         }
       }
+    },
+
+    span: {
+      color: "$white90",
+      whiteSpace: "nowrap"
     }
   }
 });
@@ -159,6 +153,13 @@ export const Form = styled("form", {
         fill: "$gray500",
 
         transition: "fill .2s ease"
+      },
+
+      span: {
+        display: "inline-block",
+        paddingTop: 8,
+        color: "$red",
+        fontSize: 14
       }
     }
   },
