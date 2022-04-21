@@ -1,6 +1,6 @@
 import Image from "next/image";
-import { useRouter } from "next/router";
-import { useUser } from "../context/UserContext";
+import Head from "next/head";
+import { useAuth } from "../context/Auth";
 
 import { Button } from "../components/Button";
 import { Header } from "../components/Header";
@@ -12,11 +12,16 @@ import nlwHeat from "../assets/nlw-heat.svg";
 import * as D from "../styles/pages/Dashboard";
 
 export default function Dashboard() {
-  const router = useRouter();
-  const { user } = useUser();
+  const { user } = useAuth();
 
   return (
-    <div>
+    <>
+      <Head>
+        <title>Rocketseat | Dashboard</title>
+        <meta name="description" content="Página Dashboard" />
+        <meta name="theme-color" content="#8257e5" />
+      </Head>
+
       <Header />
 
       <D.Container>
@@ -47,7 +52,7 @@ export default function Dashboard() {
                       <span>0 visualizações nos últimos 7 dias</span>
                     </div>
 
-                    <Button onClick={() => router.push("/profile")}>
+                    <Button as="a" href="/profile">
                       Visualizar perfil
                     </Button>
                   </div>
@@ -105,6 +110,6 @@ export default function Dashboard() {
           </D.Wrapper>
         </D.Main>
       </D.Container>
-    </div>
+    </>
   );
 }
