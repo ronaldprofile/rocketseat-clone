@@ -3,6 +3,7 @@ import {
   ReactNode,
   useContext,
   useEffect,
+  useRef,
   useState
 } from "react";
 import { useRouter } from "next/router";
@@ -43,6 +44,7 @@ interface AuthResponse {
 interface AuthContextData {
   user: User | null;
   signup: (user: User) => Promise<void>;
+  signOut: () => void;
   signInWithEmailAndPassword: (
     email: string,
     password: string
@@ -82,10 +84,7 @@ export function AuthContextProvider({ children }: AuthContextProviderProps) {
   async function signup(user: User) {
     try {
       const { data: userData } = await api.post("signup", user);
-      localStorage.setItem(
-        "@rocketseat_clone:userId",
-        JSON.stringify(userData.id)
-      );
+      localStorage.setItem("@rocketseat_clone:userId", userData.id);
 
       setUser(userData);
     } catch (error) {
@@ -93,6 +92,13 @@ export function AuthContextProvider({ children }: AuthContextProviderProps) {
     }
 
     router.push("/dashboard");
+  }
+
+  function signOut() {
+    localStorage.removeItem("@rocketseat_clone:userId");
+    router.push("/login");
+
+    setUser(null);
   }
 
   async function signInWithEmailAndPassword(email: string, password: string) {
@@ -103,9 +109,15 @@ export function AuthContextProvider({ children }: AuthContextProviderProps) {
       });
 
       if (!userData) {
-        toast.error("E-mail ou senha inválidos", { theme: "colored" });
-        return;
+        toast.error("E-mail ou senha inválidos", {
+          theme: "colored",
+          icon: false
+        });
+
+        throw new Error("E-mail and password invalid");
       }
+
+      localStorage.setItem("@rocketseat_clone:userId", userData.id);
 
       setUser(userData);
       router.push("/dashboard");
@@ -125,21 +137,12 @@ export function AuthContextProvider({ children }: AuthContextProviderProps) {
     }
   }, []);
 
-  useEffect(() => {
-    const token = localStorage.getItem("@rocketseat_clone:token");
-
-    if (token) {
-      api.get(`user/${userId}`).then(response => {
-        setUser(response.data);
-      });
-    }
-  }, [userId]);
-
   return (
     <AuthContext.Provider
       value={{
         user,
         signup,
+        signOut,
         signInWithEmailAndPassword,
         signInWithGithub,
         signInGithubUrl
