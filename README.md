@@ -14,8 +14,6 @@ Abaixo segue uma demo do projeto.
 
 https://user-images.githubusercontent.com/81709922/161407480-cd96503f-aa31-418f-9d7b-4770546ca242.mp4
 
-
-
 ## Próximo nível
 
 - Tela de signup ✅.
@@ -24,7 +22,7 @@ https://user-images.githubusercontent.com/81709922/161407480-cd96503f-aa31-418f-
 - Tela de Dashboard ✅.
 - Navegação com next router ✅.
 - Cadastro de usuário ✅.
-
+- Login com e-mail e senha ✅.
 - Upload de imagens para foto de perfil e banner (Coming soon).
 
 ## Techs
