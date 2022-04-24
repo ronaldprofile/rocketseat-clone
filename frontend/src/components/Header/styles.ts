@@ -110,7 +110,14 @@ export const ButtonIcon = styled("button", {
   border: 0,
   borderRadius: "$sm",
   transition: "all .2s",
+
   "&:hover": {
-    background: "$black100"
+    background: "$black100",
+
+    svg: {
+      transition: ".2s",
+
+      path: { fill: "$white" }
+    }
   }
 });
