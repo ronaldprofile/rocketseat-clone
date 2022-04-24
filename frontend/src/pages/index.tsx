@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Image from "next/image";
+import Link from "next/link";
 
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -213,7 +214,9 @@ export default function Home() {
 
             <div className="login">
               <span>Já tem uma conta?&nbsp;</span>
-              <a href="/login">Faça seu login</a>
+              <Link href="/login">
+                <a>Faça seu login</a>
+              </Link>
             </div>
           </H.Content>
         </H.Wrapper>
