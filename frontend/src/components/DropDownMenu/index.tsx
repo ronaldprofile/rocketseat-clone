@@ -9,7 +9,6 @@ import myDatasIcon from "../../assets/my-datas.svg";
 import codeNLWIcon from "../../assets/code-nlw.svg";
 import helpIcon from "../../assets/help.svg";
 import historyIcon from "../../assets/history.svg";
-import leavePlatformIcon from "../../assets/leave-platform.svg";
 
 import * as DropdownMenuPrimitive from "@radix-ui/react-dropdown-menu";
 import * as D from "./styles";
@@ -23,7 +22,7 @@ export function DropDownMenu({ children }: DropDownMenuProps) {
   return (
     <DropdownMenuPrimitive.Root>
       <DropdownMenuPrimitive.Trigger asChild>
-        <div>{children}</div>
+        {children}
       </DropdownMenuPrimitive.Trigger>
 
       <D.Content>
@@ -35,6 +34,7 @@ export function DropDownMenu({ children }: DropDownMenuProps) {
             </a>
           </Link>
         </D.Item>
+
         <D.Item>
           <Link href="/account" passHref>
             <a>
@@ -46,6 +46,7 @@ export function DropDownMenu({ children }: DropDownMenuProps) {
             </a>
           </Link>
         </D.Item>
+
         <D.Item>
           <Link href="/notebook" passHref>
             <a>
@@ -57,6 +58,7 @@ export function DropDownMenu({ children }: DropDownMenuProps) {
             </a>
           </Link>
         </D.Item>
+
         <D.Item>
           <Link href="/nlw" passHref>
             <a>
@@ -68,6 +70,7 @@ export function DropDownMenu({ children }: DropDownMenuProps) {
             </a>
           </Link>
         </D.Item>
+
         <D.Item>
           <Link href="/help" passHref>
             <a>
@@ -91,6 +94,7 @@ export function DropDownMenu({ children }: DropDownMenuProps) {
             </a>
           </Link>
         </D.Item>
+
         <D.Item>
           <Link href="/history" passHref>
             <a>
@@ -98,15 +102,6 @@ export function DropDownMenu({ children }: DropDownMenuProps) {
               <span>Histórico</span>
             </a>
           </Link>
-        </D.Item>
-        <D.Item>
-          <a href="#">
-            <Image
-              src={leavePlatformIcon}
-              alt="ícone representando o X para sair da plataforma"
-            />
-            <span>Sair da plataforma</span>
-          </a>
         </D.Item>
 
         <D.Item>
