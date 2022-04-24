@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm, SubmitHandler } from "react-hook-form";
@@ -120,7 +121,9 @@ export default function Login() {
 
           <div className="register">
             <span>Não tem uma conta?&nbsp;</span>
-            <a href="/">Registre-se</a>
+            <Link href="/">
+              <a>Registre-se</a>
+            </Link>
           </div>
 
           <div className="divider"></div>
