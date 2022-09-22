@@ -16,8 +16,8 @@ export const Button = styled("button", {
         fontSize: 16,
 
         "&:hover": {
-          background: "#a883FF"
-        }
+          background: "#a883FF",
+        },
       },
 
       outlined: {
@@ -30,20 +30,20 @@ export const Button = styled("button", {
 
         "&:hover": {
           background: "#a883FF",
-          borderColor: "#a883FF"
-        }
+          borderColor: "#a883FF",
+        },
       },
 
       disabled: {
         background: "$purple70",
         fontSize: 16,
         color: "$gray50",
-        cursor: "not-allowed"
-      }
-    }
+        cursor: "not-allowed",
+      },
+    },
   },
 
   defaultVariants: {
-    variant: "primary"
-  }
+    variant: "primary",
+  },
 });

@@ -41,7 +41,7 @@ const createUserFormSchema = yup.object().shape({
   password_confirmation: yup
     .string()
     .required("Confirmação de senha é obrigatório")
-    .oneOf([null, yup.ref("password")], "Senhas não conferem")
+    .oneOf([null, yup.ref("password")], "Senhas não conferem"),
 });
 
 export default function Home() {
@@ -49,24 +49,19 @@ export default function Home() {
   const {
     register,
     handleSubmit,
-    formState: { isSubmitting, errors }
+    formState: { isSubmitting, errors },
   } = useForm({
-    resolver: yupResolver(createUserFormSchema)
+    resolver: yupResolver(createUserFormSchema),
   });
 
-  const handleCreateUser: SubmitHandler<CreateUserFormData> = async data => {
+  const handleCreateUser: SubmitHandler<CreateUserFormData> = async (data) => {
+    const { name, email, password, password_confirmation } = data;
+
     await signup({
-      ...data,
-      about_me: "",
-      avatar_url: "",
-      github_url: "",
-      linkedin_url: "",
-      company: "",
-      occupation: "",
-      status: "",
-      city: "",
-      state: "",
-      country: ""
+      name,
+      email,
+      password,
+      password_confirmation,
     });
   };
 

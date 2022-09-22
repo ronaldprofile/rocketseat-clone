@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { useUser } from "../../context/UserContext";
+
 import {
   Modal as ModalComponent,
   ModalContent,
@@ -29,7 +29,6 @@ interface ModalMyProfileDataInputs {
 }
 
 export function ModalMyProfile({ children }: ModalMyProfileProps) {
-  const { handleUpdateProfileUser } = useUser();
 
   const {
     handleSubmit,
@@ -38,19 +37,19 @@ export function ModalMyProfile({ children }: ModalMyProfileProps) {
     formState: { errors }
   } = useForm();
 
-  const handleSubmitForm: SubmitHandler<
-    ModalMyProfileDataInputs
-  > = async values => {
-    const userData = values;
+  // const handleSubmitForm: SubmitHandler<
+  //   ModalMyProfileDataInputs
+  // > = async values => {
+  //   const userData = values;
 
-    try {
-      await handleUpdateProfileUser(userData);
-    } catch (error) {
-      console.log(error);
-    }
+  //   try {
+  //     await handleUpdateProfileUser(userData);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
 
-    reset();
-  };
+  //   reset();
+  // };
 
   return (
     <ModalComponent>
@@ -60,7 +59,7 @@ export function ModalMyProfile({ children }: ModalMyProfileProps) {
         <ModalContent>
           <ModalTitle>Meu perfil</ModalTitle>
 
-          <M.Form onSubmit={handleSubmit(handleSubmitForm)}>
+          <M.Form onSubmit={() => {}}>
             <div>
               <section>
                 <div>

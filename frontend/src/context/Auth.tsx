@@ -4,7 +4,7 @@ import {
   useContext,
   useEffect,
   useRef,
-  useState
+  useState,
 } from "react";
 import { useRouter } from "next/router";
 import { api } from "../services/api";
@@ -29,6 +29,13 @@ interface User {
   country: string;
 }
 
+interface Account {
+  name: string;
+  email: string;
+  password: string;
+  password_confirmation: string;
+}
+
 interface GithubUserResponse {
   id: number;
   avatar_url: string;
@@ -43,7 +50,7 @@ interface AuthResponse {
 
 interface AuthContextData {
   user: User | null;
-  signup: (user: User) => Promise<void>;
+  signup: (account: Account) => Promise<void>;
   signOut: () => void;
   signInWithEmailAndPassword: (
     email: string,
@@ -69,7 +76,7 @@ export function AuthContextProvider({ children }: AuthContextProviderProps) {
   async function signInWithGithub(githubCode: string) {
     try {
       const response = await api.post<AuthResponse>("authenticate", {
-        code: githubCode
+        code: githubCode,
       });
 
       const { user, token } = response.data;
@@ -81,12 +88,12 @@ export function AuthContextProvider({ children }: AuthContextProviderProps) {
     }
   }
 
-  async function signup(user: User) {
+  async function signup(account: Account) {
     try {
-      const { data: userData } = await api.post("signup", user);
-      localStorage.setItem("@rocketseat_clone:userId", userData.id);
+      const { data: accountData } = await api.post("signup", account);
+      localStorage.setItem("@rocketseat_clone:accountId", accountData.id);
 
-      setUser(userData);
+      setUser(accountData);
     } catch (error) {
       console.log(error);
     }
@@ -103,15 +110,15 @@ export function AuthContextProvider({ children }: AuthContextProviderProps) {
 
   async function signInWithEmailAndPassword(email: string, password: string) {
     try {
-      const { data: userData } = await api.post("authenticate/login", {
+      const { data: userData } = await api.post("auth/login", {
         email,
-        password
+        password,
       });
 
       if (!userData) {
         toast.error("E-mail ou senha inválidos", {
           theme: "colored",
-          icon: false
+          icon: false,
         });
 
         throw new Error("E-mail and password invalid");
@@ -127,12 +134,12 @@ export function AuthContextProvider({ children }: AuthContextProviderProps) {
   }
 
   useEffect(() => {
-    const userIdStorage = localStorage.getItem("@rocketseat_clone:userId");
+    const accountId = localStorage.getItem("@rocketseat_clone:accountId");
 
-    if (userIdStorage) {
-      api.get(`user/${userIdStorage}`).then(response => {
+    if (accountId) {
+      api.get(`account/${accountId}`).then((response) => {
         setUser(response.data);
-        setUserId(userIdStorage);
+        setUserId(accountId);
       });
     }
   }, []);
@@ -145,7 +152,7 @@ export function AuthContextProvider({ children }: AuthContextProviderProps) {
         signOut,
         signInWithEmailAndPassword,
         signInWithGithub,
-        signInGithubUrl
+        signInGithubUrl,
       }}
     >
       {children}

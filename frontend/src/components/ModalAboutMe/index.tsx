@@ -7,7 +7,7 @@ import {
   ModalWrapper,
   ModalTrigger,
   ModalFooterActions,
-  ModalTitle
+  ModalTitle,
 } from "../Modal";
 
 import {
@@ -16,10 +16,9 @@ import {
   FontBoldIcon,
   FontItalicIcon,
   EyeOpenIcon,
-  CodeIcon
+  CodeIcon,
 } from "@radix-ui/react-icons";
 
-import { useUser } from "../../context/UserContext";
 import * as M from "./styles";
 
 interface ModalAboutMeProps {
@@ -33,20 +32,14 @@ interface ModalDataInputs {
 }
 
 export function ModalAboutMe({ children }: ModalAboutMeProps) {
-  // const {  } = useUser();
-
   const {
     handleSubmit,
     register,
     formState: { errors },
-    reset
+    reset,
   } = useForm();
 
-  const handleSubmitForm: SubmitHandler<ModalDataInputs> = async values => {
-    const userInformation = { ...values };
-
-    // await (userInformation);
-
+  const handleSubmitForm: SubmitHandler<ModalDataInputs> = async (values) => {
     reset();
   };
 

@@ -9,7 +9,7 @@ export const Container = styled("div", {
   borderRadius: "$sm",
 
   "& ~ div": {
-    marginTop: 24
+    marginTop: 24,
   },
 
   ".member": {
@@ -29,9 +29,9 @@ export const Container = styled("div", {
       top: 0,
       width: "calc(100% + 64px)",
       height: 1,
-      background: "$black80"
-    }
-  }
+      background: "$black80",
+    },
+  },
 });
 
 export const Label = styled("label", {
@@ -48,10 +48,10 @@ export const Label = styled("label", {
     userIsWorking: {
       true: {
         "&::before": {
-          borderColor: "$green"
-        }
-      }
-    }
+          borderColor: "$green",
+        },
+      },
+    },
   },
 
   "&::before": {
@@ -59,15 +59,15 @@ export const Label = styled("label", {
     position: "absolute",
     inset: 0,
     border: "4px solid $white60",
-    borderRadius: "50%"
+    borderRadius: "50%",
   },
 
   "&:hover": {
     "& .hover-text": {
       span: {
-        transform: "translateY(0)"
-      }
-    }
+        transform: "translateY(0)",
+      },
+    },
   },
 
   ".hover-text": {
@@ -94,8 +94,8 @@ export const Label = styled("label", {
       background: "rgba(0,0,0,0.5)",
       color: "$white",
       transform: "translateY(45px)",
-      transition: "all .2s ease"
-    }
+      transition: "all .2s ease",
+    },
   },
 
   button: {
@@ -109,8 +109,8 @@ export const Label = styled("label", {
       width: "100%",
       height: "100%",
       objectFit: "cover",
-      borderRadius: "50%"
-    }
+      borderRadius: "50%",
+    },
   },
 
   ".company": {
@@ -127,9 +127,9 @@ export const Label = styled("label", {
 
       background: "$green100",
       color: "$green",
-      borderRadius: 20
-    }
-  }
+      borderRadius: 20,
+    },
+  },
 });
 
 export const Section = styled("section", {
@@ -141,7 +141,7 @@ export const Section = styled("section", {
 
   span: {
     fontSize: 16,
-    color: "$white70"
+    color: "$white70",
   },
 
   ".address": {
@@ -154,10 +154,10 @@ export const Section = styled("section", {
 
       svg: {
         marginRight: 8,
-        fill: "$gray50"
-      }
-    }
-  }
+        fill: "$gray50",
+      },
+    },
+  },
 });
 
 export const ButtonEdit = styled("button", {
@@ -180,13 +180,13 @@ export const ButtonEdit = styled("button", {
 
   "&:hover": {
     background: "$gray500",
-    color: "$white"
-  }
+    color: "$white",
+  },
 });
 
 export const Title = styled("h1", {
   marginBottom: 30,
   fontSize: 24,
   fontWeight: "bold",
-  color: "$white"
+  color: "$white",
 });
