@@ -7,26 +7,45 @@ datasource db {
   url      = "file:./dev.db"
 }
 
-model User {
+model Account {
   id                    String @id @default(uuid())
   name                  String
   email                 String
   password              String
   password_confirmation String
 
-  about_me     String
-  avatar_url   String
-  github_url   String
-  linkedin_url String
+  user      User?  @relation(fields: [accountId], references: [id])
+  accountId String?
+}
+
+model User {
+  id String @id @default(uuid())
+
+  about_me     String?
+  avatar_url   String?
+  github_url   String?
+  linkedin_url String?
 
   status     String?
   occupation String?
   company    String?
 
-  city       String
-  state      String
-  country    String
-  created_at DateTime @default(now())
+  address Address @relation(fields: [userId], references: [id])
+  userId  String
+
+  created_at DateTime  @default(now())
+  account    Account[]
 
   @@map("users")
+}
+
+model Address {
+  id      String @id @default(uuid())
+  city    String
+  state   String
+  country String
+
+  user User[]
+
+  @@map("address")
 }

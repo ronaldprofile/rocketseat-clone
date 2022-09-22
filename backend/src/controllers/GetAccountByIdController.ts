@@ -1,11 +1,11 @@
 import { Request, Response } from "express";
-import { GetUserService } from "../services/GetUserService";
+import { GetAccountByIdService } from "../services/GetAccountByIdService";
 
-export class GetUserController {
+export class GetAccountByIdController {
   async handle(request: Request, response: Response) {
     const { id } = request.params;
 
-    const service = new GetUserService();
+    const service = new GetAccountByIdService();
     const result = await service.execute(id);
 
     return response.json(result);

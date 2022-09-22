@@ -1,9 +1,7 @@
 import { Router } from "express";
-import { AuthenticateUserController } from "./controllers/AuthenticateUserController";
-import { CreateUserController } from "./controllers/CreateUserController";
-import { GetUserController } from "./controllers/GetUserController";
-import { LoginUserController } from "./controllers/LoginUserController";
-import { UpdatedUserController } from "./controllers/UpdatedUserControlled";
+import { CreateAccountController } from "./controllers/CreateAccountController";
+import { GetAccountByIdController } from "./controllers/GetAccountByIdController";
+import { LoginWithEmailAndPassworController } from "./controllers/LoginWithEmailAndPasswordController";
 
 const router = Router();
 
@@ -19,10 +17,9 @@ router.get("/github/callback", (request, response) => {
   return response.json(code);
 });
 
-router.post("/signup", new CreateUserController().handle);
-router.get("/user/:id", new GetUserController().handle);
-router.put("/user/:id", new UpdatedUserController().handle);
-router.post("/authenticate", new AuthenticateUserController().handle);
-router.post("/authenticate/login", new LoginUserController().handle);
+router.post("/signup", new CreateAccountController().handle);
+router.get("/account/:id", new GetAccountByIdController().handle);
+
+router.post("/auth/login", new LoginWithEmailAndPassworController().handle);
 
 export { router };
